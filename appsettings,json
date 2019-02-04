@@ -1,0 +1,15 @@
+{
+    "AppSettings": {
+        "apiVersion": "v43.0",
+        "baseUrl": "",
+        "grantType": "",
+        "cliendId": "",
+        "clientSecret": "",
+        "userName": "",
+        "password": "",
+        "securityToken": "",
+        "oauthUrl": "/services/oauth2/token",
+        "orgAlias": "",
+        "basePath": "C:\\Temp"
+    }
+}
