@@ -62,7 +62,15 @@ namespace GetLimits
 
         private static void Authenticate()
         {
-            var client = new RestClient(baseUrl);
+            Uri uri = null;
+
+            if (!Uri.TryCreate(baseUrl, UriKind.Absolute, out uri))
+            {
+                System.Console.WriteLine("invalid baseUrl parameter");
+                return;
+            }
+
+            var client = new RestClient(uri);
 
             var request = new RestRequest(oauthUrl, Method.POST);
             request.AddHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
@@ -113,7 +121,7 @@ namespace GetLimits
 
         public static void SaveFile(string contents)
         {
-            String filePath = basePath + "\\" + DateTime.Now.ToString("yyyyMMddHHmm-") + orgAlias  + "-limits.json";
+            String filePath = basePath + DateTime.Now.ToString("yyyyMMddHHmm-") + orgAlias  + "-limits.json";
             try
             {
                 System.IO.File.WriteAllText ( filePath, contents);
